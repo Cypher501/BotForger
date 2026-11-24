@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<title>BotForge — Build a Telegram or Discord Bot</title>
+<style>
+:root{--bg:#0b1220;--panel:#111c2e;--panel2:#16243a;--line:#293b55;--text:#edf4ff;--muted:#9aacc5;--cyan:#61d5e8;--blue:#8ea2ff;--green:#54d6a0;--amber:#ffda91}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#1b3152 0,transparent 36%),var(--bg);color:var(--text);font:15px/1.6 Inter,system-ui,-apple-system,Segoe UI,sans-serif}.wrap{max-width:1120px;margin:auto;padding:30px 22px 65px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:48px}.brand{display:flex;align-items:center;gap:11px;font-size:18px;font-weight:850}.logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--cyan),var(--blue));display:grid;place-items:center;color:#081323;font-size:21px}.pill{border:1px solid #31506a;border-radius:99px;padding:6px 12px;color:#b6d9e6;font-size:11px;letter-spacing:1px}.hero{max-width:770px;margin-bottom:30px}.eyebrow{color:var(--cyan);font-weight:800;text-transform:uppercase;font-size:11px;letter-spacing:2px}.hero h1{font-size:clamp(36px,6vw,57px);line-height:1.07;letter-spacing:-2px;margin:12px 0 15px}.grad{background:linear-gradient(90deg,#75e2ed,#a4b1ff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);font-size:16px;max-width:680px;margin:0}.layout{display:grid;grid-template-columns:1fr 1fr;gap:19px;align-items:start}.card{background:linear-gradient(160deg,rgba(22,36,58,.97),rgba(15,26,43,.99));border:1px solid var(--line);border-radius:18px;padding:23px;box-shadow:0 18px 50px #0002}.card h2{font-size:18px;margin:0 0 4px}.sub{color:var(--muted);font-size:13px;margin:0 0 20px}.platforms{display:grid;grid-template-columns:1fr 1fr;gap:10px}.platform{cursor:pointer;border:1px solid #354a65;background:#0c1728;color:var(--text);border-radius:12px;padding:14px;text-align:left;transition:.15s}.platform.active{border-color:var(--cyan);background:#153044;box-shadow:0 0 0 2px #61d5e822}.platform strong{display:block;font-size:15px}.platform span{font-size:11px;color:var(--muted)}.platform .picon{font-size:22px;display:block;margin-bottom:5px}.step{display:flex;gap:11px;margin:15px 0}.num{flex:0 0 28px;height:28px;border-radius:9px;background:#203a55;color:var(--cyan);display:grid;place-items:center;font-weight:800;font-size:12px}.step strong{display:block;margin:0 0 2px}.step p{margin:0;color:var(--muted);font-size:12px}.inlinecode{font-family:ui-monospace,monospace;background:#0a1423;border:1px solid #263750;border-radius:6px;padding:2px 6px;color:#b9e9f0;font-size:12px}label{display:block;font-size:13px;font-weight:750;margin:16px 0 7px}.field{width:100%;border:1px solid #344964;background:#0b1627;color:var(--text);border-radius:10px;padding:12px 13px;font:14px ui-monospace,monospace;outline:none}.field:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #61d5e822}.hint{font-size:12px;color:var(--muted);margin:6px 0 0}.security{display:flex;gap:9px;background:#2a261b;border:1px solid #5b4a2b;color:#f4dba8;padding:11px;border-radius:10px;font-size:12px;margin:15px 0}.security b{color:#ffe5ad}.reveal{font:12px inherit;color:var(--cyan);background:none;border:0;cursor:pointer}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:10px;padding:12px 15px;font-weight:800;cursor:pointer;font-size:13px}.primary{background:linear-gradient(100deg,var(--cyan),#9cafff);color:#091323}.secondary{background:#20314a;color:#dceaff;border:1px solid #3a506c}.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.preview{background:#080f1b;border:1px solid #27384e;border-radius:11px;overflow:hidden}.previewhead{display:flex;justify-content:space-between;padding:10px 13px;border-bottom:1px solid #25364a;color:#9fb3cc;font-size:12px}.preview pre{margin:0;padding:15px;overflow:auto;max-height:390px;color:#c5d9f3;font:11.5px/1.7 ui-monospace,monospace;white-space:pre}.files{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:12px}.file{background:#101d30;border:1px solid #2b405b;border-radius:9px;padding:10px}.file b{display:block;font-size:12px}.file span{font-size:11px;color:var(--muted)}.how{margin-top:18px}.how h3{font-size:15px;margin:0 0 9px}.terminal{background:#080f1b;border:1px solid #263750;border-radius:10px;padding:12px;color:#b8e5d8;font:11.5px/1.85 ui-monospace,monospace;overflow:auto;white-space:pre-wrap}.toast{display:none;color:var(--green);font-size:12px;margin-top:10px}.footer{text-align:center;color:#7186a2;font-size:12px;margin-top:32px}.hidden{display:none!important}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.top{margin-bottom:35px}.card{padding:19px}}@media(max-width:430px){.wrap{padding:21px 14px 45px}.hero h1{letter-spacing:-1px}.pill{font-size:9px}.files{grid-template-columns:1fr}}
+</style></head>
+<body><div class="wrap">
+<header class="top"><div class="brand"><div class="logo">✦</div>BotForge <span style="color:#8196b4;font-weight:500">/ bot starter</span></div><div class="pill">PYTHON · BEGINNER FRIENDLY</div></header>
+<section class="hero"><div class="eyebrow">Your first bot, made simple</div><h1>What are you building?<br><span class="grad">Let's make it work.</span></h1><p>Choose Telegram or Discord, tell us what your bot should do, and generate a beginner-friendly Python starter project. Your secret token goes into a separate <code class="inlinecode">.env</code> file.</p></section>
+<div class="layout">
+<section class="card">
+<h2>01 / Choose your platform</h2><p class="sub">Select where your bot will live.</p>
+<div class="platforms">
+<button class="platform active" id="telegramBtn" type="button"><span class="picon">✈️</span><strong>Telegram</strong><span>BotFather token</span></button>
+<button class="platform" id="discordBtn" type="button"><span class="picon">🎮</span><strong>Discord</strong><span>Developer Portal token</span></button>
+</div>
+<div style="margin-top:22px"><h2>02 / Create your bot account</h2><p class="sub" id="guideIntro">Follow these steps in Telegram to get a bot token.</p>
+<div id="telegramGuide">
+<div class="step"><div class="num">1</div><div><strong>Open @BotFather</strong><p>In Telegram, search for <b>@BotFather</b> and open the verified bot.</p></div></div>
+<div class="step"><div class="num">2</div><div><strong>Create your bot</strong><p>Send <span class="inlinecode">/newbot</span>, choose a display name, then a username ending in <span class="inlinecode">bot</span>.</p></div></div>
+<div class="step"><div class="num">3</div><div><strong>Copy the API token</strong><p>BotFather will provide a token. Keep it private; it grants control of your bot.</p></div></div>
+</div>
+<div id="discordGuide" class="hidden">
+<div class="step"><div class="num">1</div><div><strong>Open Discord Developer Portal</strong><p>Visit <b>discord.com/developers/applications</b> and sign in.</p></div></div>
+<div class="step"><div class="num">2</div><div><strong>Create an application and bot</strong><p>Choose <b>New Application</b>, give it a name, open the <b>Bot</b> section, then add a bot if prompted.</p></div></div>
+<div class="step"><div class="num">3</div><div><strong>Reset and copy the bot token</strong><p>In the Bot section, use <b>Reset Token</b> / <b>View Token</b> and copy it. Never share it.</p></div></div>
+<div class="step"><div class="num">4</div><div><strong>Enable message content intent</strong><p>Under Bot → Privileged Gateway Intents, enable <b>Message Content Intent</b> for this text-reply starter.</p></div></div>
+<div class="step"><div class="num">5</div><div><strong>Invite your bot to a server</strong><p>Use OAuth2 → URL Generator, select <b>bot</b> scope and permissions to view channels and send messages, then open the generated invite URL.</p></div></div>
+</div></div>
+<div class="security"><span>🔒</span><div><b>Keep your token secret.</b> This page uses it only to create your local <span class="inlinecode">.env</span> download. It is not sent to a server. Never commit <span class="inlinecode">.env</span> to Git. If exposed, regenerate it in the platform's bot settings.</div></div>
+<label for="botpurpose">What kind of bot are you creating?</label><input class="field" id="botpurpose" type="text" placeholder="e.g. A study helper, welcome bot, FAQ bot…">
+<p class="hint">We'll add this as a project note. This starter begins with a simple Hello reply.</p>
+<label for="token" id="tokenLabel">Telegram bot token</label>
+<div style="position:relative"><input class="field" id="token" type="password" placeholder="Paste your BotFather token" autocomplete="off" spellcheck="false"><button class="reveal" id="toggle" type="button" style="position:absolute;right:9px;top:11px">Show</button></div>
+<p class="hint">Paste the full token exactly as provided by Telegram or Discord.</p>
+<div class="actions"><button class="btn primary" id="generate">Generate my bot files ↗</button><button class="btn secondary" id="clear" type="button">Clear</button></div><div class="toast" id="toast" role="status">Your project files have been downloaded.</div>
+</section>
+<section class="card">
+<h2>03 / Your simple Hello bot</h2><p class="sub" id="previewSub">A minimal Telegram bot that replies “Hello!” and logs messages in your terminal.</p>
+<div class="preview"><div class="previewhead"><span id="filename">bot.py · Telegram</span><span>Python</span></div><pre id="code"></pre></div>
+<div class="files"><div class="file"><b>bot.py</b><span>Python bot source code</span></div><div class="file"><b>.env</b><span>Your private token</span></div><div class="file"><b>requirements.txt</b><span>Dependencies</span></div><div class="file"><b>.gitignore</b><span>Protects your secrets</span></div></div>
+<div class="how"><h3>04 / Install and run</h3><div class="terminal" id="commands"></div><p class="hint">Keep the terminal open while the bot is running. Open your bot in its platform and send a message to test it.</p></div>
+<div class="how"><h3>What this starter does</h3><p class="hint">When someone sends a message, the bot prints the message in your terminal and replies with <b style="color:#d9eaff">Hello!</b>. It also responds to the basic start command where supported.</p></div>
+</section>
+</div><div class="footer">BotForge is an independent starter template and is not affiliated with Telegram or Discord.</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);let platform='telegram';
+const telegramCode=`import os
+from dotenv import load_dotenv
+from telegram import Update
+from telegram.ext import Application, CommandHandler, MessageHandler, ContextTypes, filters
+
+load_dotenv()
+TOKEN = os.getenv("BOT_TOKEN")
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    print("Hello! /start received")
+    await update.message.reply_text("Hello! 👋")
+
+async def hello(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    message = update.message.text
+    print(f"Received: {message}")
+    await update.message.reply_text("Hello! 👋")
+
+def main():
+    if not TOKEN:
+        raise RuntimeError("BOT_TOKEN is missing from .env")
+    app = Application.builder().token(TOKEN).build()
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, hello))
+    print("Telegram bot is running. Press Ctrl+C to stop.")
+    app.run_polling()
+
+if __name__ == "__main__":
+    main()`;
+const discordCode=`import os
+import discord
+from dotenv import load_dotenv
+
+load_dotenv()
+TOKEN = os.getenv("BOT_TOKEN")
+
+intents = discord.Intents.default()
+intents.message_content = True
+client = discord.Client(intents=intents)
+
+@client.event
+async def on_ready():
+    print(f"Hello! Logged in as {client.user}")
+
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    print(f"Received from {message.author}: {message.content}")
+    await message.channel.send("Hello! 👋")
+
+if not TOKEN:
+    raise RuntimeError("BOT_TOKEN is missing from .env")
+
+client.run(TOKEN)`;
+function refresh(){
+ const isT=platform==='telegram';
+ $('telegramBtn').classList.toggle('active',isT);$('discordBtn').classList.toggle('active',!isT);
+ $('telegramGuide').classList.toggle('hidden',!isT);$('discordGuide').classList.toggle('hidden',isT);
+ $('guideIntro').textContent=isT?'Follow these steps in Telegram to get a bot token.':'Follow these steps in Discord to create an application and bot token.';
+ $('tokenLabel').textContent=isT?'Telegram bot token':'Discord bot token';
+ $('token').placeholder=isT?'Paste your BotFather token':'Paste your Discord bot token';
+ $('previewSub').textContent=isT?'A minimal Telegram bot that replies “Hello!” and logs messages in your terminal.':'A minimal Discord bot that replies “Hello!” and logs messages in your terminal.';
+ $('filename').textContent=isT?'bot.py · Telegram':'bot.py · Discord';
+ $('code').textContent=isT?telegramCode:discordCode;
+ $('commands').textContent='python -m venv .venv\n\n# Activate (Windows)\n.venv\\\\Scripts\\\\activate\n# macOS / Linux: source .venv/bin/activate\n\npip install -r requirements.txt\npython bot.py';
+}
+$('telegramBtn').onclick=()=>{platform='telegram';refresh()};$('discordBtn').onclick=()=>{platform='discord';refresh()};
+$('toggle').onclick=()=>{const t=$('token');t.type=t.type==='password'?'text':'password';$('toggle').textContent=t.type==='password'?'Show':'Hide'};
+$('clear').onclick=()=>{$('token').value='';$('botpurpose').value='';$('toast').style.display='none'};
+function download(name,content){const blob=new Blob([content],{type:'text/plain'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$('generate').onclick=()=>{
+ const token=$('token').value.trim();if(!token){alert('Please paste your bot token first.');$('token').focus();return}
+ if(token.includes('\n')||token.includes('\r')){alert('The token should be a single line.');return}
+ const purpose=$('botpurpose').value.trim()||'A simple Hello bot';
+ const req=platform==='telegram'?'python-telegram-bot>=21.0,<23.0\npython-dotenv>=1.0.0,<2.0.0\n':'discord.py>=2.4.0,<3.0.0\npython-dotenv>=1.0.0,<2.0.0\n';
+ const code=platform==='telegram'?telegramCode:discordCode;
+ const readme=`# ${platform==='telegram'?'Telegram':'Discord'} Python Hello Bot\n\nProject idea: ${purpose}\n\n## Run it\n1. Install Python 3.10 or newer.\n2. Create and activate a virtual environment.\n3. Install packages: pip install -r requirements.txt\n4. Keep .env beside bot.py.\n5. Run: python bot.py\n\nThe bot prints incoming messages in your terminal and replies Hello!.\n\n## Token safety\nNever share your token or commit .env. If it is exposed, regenerate it in the platform's bot settings.\n${platform==='discord'?'Enable Message Content Intent in the Discord Developer Portal and invite the bot to your server with suitable permissions.':''}\n`;
+ download('bot.py',code);
+ download('.env','BOT_TOKEN='+token+'\n');
+ download('requirements.txt',req);
+ download('.gitignore','.env\n.venv/\n__pycache__/\n*.py[cod]\n');
+ download('README.md',readme);
+ $('toast').style.display='block';
+};
+refresh();
+</script></body></html>
